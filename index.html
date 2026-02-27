@@ -16,6 +16,9 @@
 </head>
 
 <body>
+    <!-- Top Scan Line -->
+    <div class="top-scan-line"></div>
+
     <!-- Custom Cursor -->
     <div class="cursor" id="cursor"></div>
     <div class="cursor-follower" id="cursorFollower"></div>
@@ -103,6 +106,10 @@
         </div>
         <!-- Floating Particles -->
         <div class="hero-particles" id="heroParticles"></div>
+        <div class="moving-lines-container" style="opacity: 0.05;">
+            <div class="m-line m-line-h" style="top: 30%; animation-duration: 40s;"></div>
+            <div class="m-line m-line-v" style="left: 40%; animation-duration: 35s;"></div>
+        </div>
     </section>
 
     <!-- ====== BRANDS SHOWCASE SECTION ====== -->
@@ -232,6 +239,12 @@
 
     <!-- ====== SERVICES SECTION ====== -->
     <section class="services" id="services">
+        <div class="moving-lines-container">
+            <div class="m-line m-line-h" style="top: 20%"></div>
+            <div class="m-line m-line-h" style="top: 80%; animation-duration: 25s; opacity: 0.5;"></div>
+            <div class="m-line m-line-v" style="left: 30%"></div>
+            <div class="m-line m-line-v" style="left: 70%; animation-duration: 15s; opacity: 0.5;"></div>
+        </div>
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">[01] — Services</span>
@@ -471,27 +484,27 @@
         <div class="scallop-white-top"></div>
         <div class="container">
             <div class="perks-grid">
-                <div class="perk-item">
+                <div class="perk-item reveal-sky">
                     <div class="perk-img-wrap perk-bg-1">
                         <img src="delivery.png" alt="Fast Delivery">
                     </div>
-                    <h3>Fast and Reliable Delivery</h3>
-                    <p>We move at the speed of creativity — and caffeine. Your deadlines won't even see us coming.</p>
+                    <h3>Warp Speed Delivery</h3>
+                    <p>We don't do "soon." We do "now." Our workflow is optimized for precision and velocity.</p>
                 </div>
-                <div class="perk-item">
+                <div class="perk-item reveal-sky">
                     <div class="perk-img-wrap perk-bg-2">
                         <img src="pricing.png" alt="Clear Pricing">
                     </div>
-                    <h3>Clear, No-Surprise Pricing</h3>
-                    <p>No hidden fees, no sneaky charges — just clear, honest pricing and work that makes you wonder.
+                    <h3>Radical Transparency</h3>
+                    <p>One flat fee. Zero surprises. We believe trust is built through honesty and clear expectations.
                     </p>
                 </div>
-                <div class="perk-item">
+                <div class="perk-item reveal-sky">
                     <div class="perk-img-wrap perk-bg-3">
                         <img src="creative.png" alt="Everything Under One Roof">
                     </div>
-                    <h3>Everything, Under One Roof</h3>
-                    <p>Design? Branding? Websites? TikTok dances? (Okay, maybe not that last one... yet.)</p>
+                    <h3>Holistic Ecosystem</h3>
+                    <p>From the first pixel to the final line of code, we handle the entire digital lifecycle.</p>
                 </div>
             </div>
         </div>
@@ -506,31 +519,27 @@
             <div class="comp-card-wrapper">
                 <div class="comp-card">
                     <!-- Left Side: Others -->
-                    <div class="comp-others">
-                        <h3>Other Agencies</h3>
+                    <div class="comp-others reveal-wall-left">
+                        <h3>Laggard Agencies</h3>
                         <ul class="comp-list">
-                            <li><span class="icon">🚫</span> Generic Solutions</li>
-                            <li><span class="icon">🚫</span> Jargon Overload</li>
-                            <li><span class="icon">🚫</span> Boring Creativity</li>
-                            <li><span class="icon">🚫</span> Hidden Costs</li>
-                            <li><span class="icon">🚫</span> Outdated Methods</li>
-                            <li><span class="icon">🚫</span> Reactive Tactics</li>
+                            <li><span class="comp-icon">✖</span> Template-based generic designs</li>
+                            <li><span class="comp-icon">✖</span> Complex jargon, zero clarity</li>
+                            <li><span class="comp-icon">✖</span> Hidden fees and opaque billing</li>
+                            <li><span class="comp-icon">✖</span> Slow, reactive communication</li>
+                            <li><span class="comp-icon">✖</span> Outdated tech stacks</li>
                         </ul>
                     </div>
                     <!-- VS Divider -->
-                    <div class="comp-vs">
-                        <div class="vs-blob">Versus</div>
-                    </div>
+                    <div class="vs-blob">VS</div>
                     <!-- Right Side: H27 -->
-                    <div class="comp-h27">
+                    <div class="comp-h27 reveal-wall-right">
                         <h3>H27 Studio</h3>
                         <ul class="comp-list">
-                            <li><span class="icon">✨</span> Personalized Plans</li>
-                            <li><span class="icon">✨</span> Plain Talk</li>
-                            <li><span class="icon">✨</span> Bold Ideas</li>
-                            <li><span class="icon">✨</span> Transparent Pricing</li>
-                            <li><span class="icon">✨</span> Innovative Tools</li>
-                            <li><span class="icon">✨</span> Proactive Strategies</li>
+                            <li><span class="comp-icon">✨</span> Bespoke futuristic identities</li>
+                            <li><span class="comp-icon">✨</span> Human-first clear communication</li>
+                            <li><span class="comp-icon">✨</span> Flat, transparent monthly pricing</li>
+                            <li><span class="comp-icon">✨</span> Proactive, warp-speed delivery</li>
+                            <li><span class="comp-icon">✨</span> Cutting-edge Web3 & AI stacks</li>
                         </ul>
                     </div>
                 </div>
@@ -579,9 +588,12 @@
             <div class="giant-text-main">H27 STUDIO</div>
             <div class="giant-text-reflect">H27 STUDIO</div>
         </div>
-        <div class="cta-overlay-content">
-            <h2 class="cta-mini-title">Ready to start?</h2>
-            <a href="mailto:hello@h27studio.com" class="btn-primary">Let's Talk</a>
+        <div class="cta-overlay-content reveal-up">
+            <h2 class="cta-mini-title">Stop settling for "okay." <br> Let's build something <span
+                    class="gradient-text">legendary.</span></h2>
+            <p style="margin-bottom: 30px; opacity: 0.6; max-width: 500px; margin-left: auto; margin-right: auto;">We
+                combine tactical strategy with unbridled creativity to launch brands into the future.</p>
+            <a href="mailto:hello@h27studio.com" class="btn-primary btn-lg">Launch Your Project →</a>
         </div>
     </section>
 

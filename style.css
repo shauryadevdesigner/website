@@ -212,6 +212,29 @@ img {
     transition: none;
 }
 
+.top-scan-line {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--green), transparent);
+    z-index: 10000;
+    opacity: 0.3;
+    animation: scan-move 4s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes scan-move {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
 /* ---- Container ---- */
 .container {
     max-width: var(--container-max);
@@ -1065,10 +1088,61 @@ img {
     font-size: 13px;
     line-height: 1.7;
     color: var(--gray-300);
-    margin-bottom: 18px;
+    margin-bottom: 24px;
     position: relative;
     z-index: 1;
 }
+
+/* Moving Lines Background Element */
+.moving-lines-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.1;
+    overflow: hidden;
+}
+
+.m-line {
+    position: absolute;
+    background: var(--gradient-main);
+    filter: blur(1px);
+}
+
+.m-line-h {
+    width: 200%;
+    height: 1px;
+    left: -50%;
+    animation: line-move-h 15s linear infinite;
+}
+
+.m-line-v {
+    width: 1px;
+    height: 200%;
+    top: -50%;
+    animation: line-move-v 20s linear infinite;
+}
+
+@keyframes line-move-h {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+@keyframes line-move-v {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(100vw);
+    }
+}
+
 
 .service-tags {
     display: flex;
@@ -1295,34 +1369,39 @@ img {
    COMPARISON SECTION
    ============================================ */
 .comparison {
-    padding: 100px 0;
+    padding: 120px 0;
+    background: var(--bg-primary);
 }
 
 .comp-card-wrapper {
-    max-width: 1000px;
+    max-width: 900px;
     margin: 0 auto;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 40px;
+    background: #080808;
+    border: 1px solid var(--gray-800);
+    border-radius: 24px;
     overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
 }
 
 .comp-card {
     display: grid;
-    grid-template-columns: 1fr 0.2fr 1fr;
-    align-items: stretch;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
 }
 
 .comp-others {
-    background: rgba(255, 0, 100, 0.03);
-    padding: 60px 40px;
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 60px 50px;
+    border-right: 1px solid var(--gray-800);
+    position: relative;
+    background: linear-gradient(to right, #080808, #050505);
 }
 
 .comp-h27 {
-    background: rgba(0, 255, 150, 0.03);
-    padding: 60px 40px;
+    padding: 60px 50px;
+    position: relative;
+    background: linear-gradient(to left, #080808, #0a0a0a);
 }
+
 
 .comp-title {
     font-family: var(--font-primary);
@@ -1354,22 +1433,88 @@ img {
 
 .vs-blob {
     background: var(--gradient-main);
-    color: var(--white-pure);
-    width: 80px;
-    height: 80px;
+    color: var(--black);
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-primary);
-    font-weight: 700;
-    font-size: 14px;
+    font-weight: 800;
+    font-size: 10px;
     text-transform: uppercase;
-    box-shadow: 0 0 30px var(--magenta-glow);
-    transform: translateX(-50%);
+    box-shadow: 0 0 40px var(--green-glow-strong);
+    transform: translate(-50%, -50%);
     position: absolute;
     left: 50%;
+    top: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
 }
+
+.comp-others h3,
+.comp-h27 h3 {
+    font-family: var(--font-primary);
+    font-size: clamp(20px, 3vw, 24px);
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.comp-others h3 {
+    color: var(--gray-500);
+}
+
+.comp-h27 h3 {
+    color: var(--green);
+}
+
+.comp-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.comp-list li {
+    padding: 12px 18px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 14px;
+    transition: all 0.4s var(--ease-out);
+}
+
+.comp-others .comp-list li {
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--gray-500);
+    border: 1px solid transparent;
+}
+
+.comp-h27 .comp-list li {
+    background: rgba(0, 255, 136, 0.03);
+    color: var(--white);
+    border: 1px solid rgba(0, 255, 136, 0.1);
+}
+
+.comp-h27 .comp-list li:hover {
+    background: rgba(0, 255, 136, 0.08);
+    border-color: var(--green);
+    transform: translateX(10px);
+}
+
+.comp-icon {
+    font-size: 18px;
+    opacity: 0.7;
+}
+
+.comp-h27 .comp-icon {
+    color: var(--green);
+    filter: drop-shadow(0 0 5px var(--green));
+}
+
 
 /* ============================================
    TESTIMONIALS
@@ -1444,10 +1589,10 @@ img {
    GIANT CTA (MARKLENCE STYLE)
    ============================================ */
 .giant-cta {
-    padding: 15vw 0;
+    padding: 10vw 0;
     position: relative;
     overflow: hidden;
-    background: #0a0a0a;
+    background: var(--bg-primary);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1458,6 +1603,7 @@ img {
     position: relative;
     text-align: center;
     width: 100%;
+    margin-bottom: 4vh;
 }
 
 .giant-text-bg {
@@ -1465,38 +1611,42 @@ img {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 25vw;
+    font-size: 20vw;
     font-family: var(--font-primary);
-    font-weight: 800;
-    color: rgba(255, 255, 255, 0.01);
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.02);
     white-space: nowrap;
     z-index: 1;
+    letter-spacing: -0.5vw;
 }
 
 .giant-text-main {
-    font-size: 18vw;
+    font-size: 14vw;
     font-family: var(--font-primary);
-    font-weight: 800;
-    background: linear-gradient(180deg, #fff 30%, rgba(255, 255, 255, 0.2) 100%);
+    font-weight: 900;
+    background: linear-gradient(180deg, #fff 40%, rgba(255, 255, 255, 0.1) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    letter-spacing: -1vw;
+    letter-spacing: -0.8vw;
     position: relative;
     z-index: 2;
+    line-height: 0.8;
 }
 
 .giant-text-reflect {
-    font-size: 18vw;
+    font-size: 14vw;
     font-family: var(--font-primary);
-    font-weight: 800;
-    color: rgba(255, 255, 255, 0.05);
-    letter-spacing: -1vw;
-    transform: scaleY(-0.6) translateY(-50%);
-    opacity: 0.3;
-    filter: blur(8px);
-    margin-top: -5vw;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.03);
+    letter-spacing: -0.8vw;
+    transform: scaleY(-0.4) translateY(-30%);
+    opacity: 0.2;
+    filter: blur(12px);
+    margin-top: -2vw;
+    line-height: 0.8;
 }
+
 
 .cta-overlay-content {
     margin-top: -10vw;
@@ -1851,22 +2001,30 @@ img {
 /* ============================================
    GSAP ANIMATION CLASSES
    ============================================ */
+/* ============================================
+   HYPER REVEAL ANIMATIONS
+   ============================================ */
+.reveal-sky {
+    opacity: 0;
+    transform: translateY(-100px);
+}
+
+.reveal-wall-left {
+    opacity: 0;
+    transform: translateX(-100px);
+}
+
+.reveal-wall-right {
+    opacity: 0;
+    transform: translateX(100px);
+}
+
 .reveal-up {
     opacity: 0;
-    transform: translateY(60px);
-}
-
-.reveal-left {
-    opacity: 0;
-    transform: translateX(-60px);
-}
-
-.reveal-right {
-    opacity: 0;
-    transform: translateX(60px);
+    transform: translateY(80px);
 }
 
 .reveal-scale {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.8);
 }

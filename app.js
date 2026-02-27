@@ -263,47 +263,133 @@ gsap.utils.toArray('.work-item').forEach((item, i) => {
     });
 });
 
-// --- Section Headers ---
-gsap.utils.toArray('.section-header, .about-left').forEach(header => {
-    gsap.from(header, {
+// --- HYPER REVEAL ANIMATIONS (Sky & Walls) ---
+gsap.utils.toArray('.reveal-sky').forEach((el) => {
+    gsap.fromTo(el, {
+        opacity: 0,
+        y: -100
+    }, {
         scrollTrigger: {
-            trigger: header,
+            trigger: el,
             start: 'top 85%',
             toggleActions: 'play none none reverse'
         },
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        ease: 'power4.out'
+    });
+});
+
+gsap.utils.toArray('.reveal-wall-left').forEach((el) => {
+    gsap.fromTo(el, {
         opacity: 0,
-        y: 40,
-        duration: 0.8,
+        x: -150
+    }, {
+        scrollTrigger: {
+            trigger: el,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+        },
+        opacity: 1,
+        x: 0,
+        duration: 1.5,
+        ease: 'expo.out'
+    });
+});
+
+gsap.utils.toArray('.reveal-wall-right').forEach((el) => {
+    gsap.fromTo(el, {
+        opacity: 0,
+        x: 150
+    }, {
+        scrollTrigger: {
+            trigger: el,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+        },
+        opacity: 1,
+        x: 0,
+        duration: 1.5,
+        ease: 'expo.out'
+    });
+});
+
+// --- Enhanced Section Reveals ---
+gsap.utils.toArray('.reveal-up').forEach((el) => {
+    gsap.fromTo(el, {
+        opacity: 0,
+        y: 80
+    }, {
+        scrollTrigger: {
+            trigger: el,
+            start: 'top 90%',
+            toggleActions: 'play none none reverse'
+        },
+        opacity: 1,
+        y: 0,
+        duration: 1,
         ease: 'power3.out'
     });
 });
 
-// --- About Section ---
-gsap.from('.about-right', {
+// --- MOVING LINES ENHANCEMENT ---
+gsap.utils.toArray('.service-card, .process-step').forEach(card => {
+    const line = card.querySelector('.service-line, .step-line');
+    if (line) {
+        card.addEventListener('mouseenter', () => {
+            gsap.to(line, {
+                width: '100%',
+                duration: 0.6,
+                ease: 'power4.inOut'
+            });
+        });
+        card.addEventListener('mouseleave', () => {
+            gsap.to(line, {
+                width: '0%',
+                duration: 0.6,
+                ease: 'power4.inOut'
+            });
+        });
+    }
+});
+
+// --- GIANT CTA PARALLAX ---
+gsap.to('.giant-text-bg', {
     scrollTrigger: {
-        trigger: '.about-right',
-        start: 'top 80%',
-        toggleActions: 'play none none reverse'
+        trigger: '.giant-cta',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true
     },
-    opacity: 0,
-    x: 60,
-    duration: 1,
-    ease: 'power3.out'
+    x: '10vw',
+    ease: 'none'
+});
+
+gsap.to('.giant-text-main', {
+    scrollTrigger: {
+        trigger: '.giant-cta',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true
+    },
+    x: '-5vw',
+    ease: 'none'
 });
 
 // --- Stats Counter Animation ---
 gsap.utils.toArray('.stat-number').forEach(stat => {
-    const target = parseInt(stat.dataset.target);
+    const target = parseInt(stat.dataset.target) || 10;
     gsap.fromTo(stat, {
         innerText: 0
     }, {
         innerText: target,
-        duration: 2,
-        ease: 'power2.out',
+        duration: 2.5,
+        ease: 'expo.out',
         snap: { innerText: 1 },
         scrollTrigger: {
             trigger: stat,
-            start: 'top 85%',
+            start: 'top 90%',
             toggleActions: 'play none none reverse'
         },
         onUpdate: function () {
@@ -460,20 +546,42 @@ gsap.utils.toArray('.brand-pill').forEach((pill, i) => {
 });
 
 // ============================================
-// 9. MAGNETIC BUTTON EFFECT (CTA)
+// 9. MAGNETIC BUTTON EFFECT (ENHANCED)
 // ============================================
-const magneticBtns = document.querySelectorAll('.btn-primary, .cta-link');
+const magneticBtns = document.querySelectorAll('.btn-primary, .cta-link, .vs-blob');
 magneticBtns.forEach(btn => {
     btn.addEventListener('mousemove', (e) => {
         const rect = btn.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
-        btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+
+        gsap.to(btn, {
+            x: x * 0.3,
+            y: y * 0.3,
+            duration: 0.4,
+            ease: 'power2.out'
+        });
+
+        if (btn.classList.contains('vs-blob')) {
+            gsap.to(btn, {
+                scale: 1.1,
+                boxShadow: '0 0 50px var(--green-glow-strong)',
+                duration: 0.3
+            });
+        }
     });
+
     btn.addEventListener('mouseleave', () => {
-        btn.style.transform = '';
+        gsap.to(btn, {
+            x: 0,
+            y: 0,
+            scale: 1,
+            duration: 0.6,
+            ease: 'elastic.out(1, 0.3)'
+        });
     });
 });
+
 
 // ============================================
 // 10. PAGE LOAD TRANSITION
