@@ -1229,6 +1229,121 @@ img {
 }
 
 /* ============================================
+   PERKS SECTION (SCALLOPED)
+   ============================================ */
+.perks {
+    background: #fdfbe1;
+    position: relative;
+    padding: 120px 0;
+    margin: 100px 0;
+    color: #331d2c;
+    /* Theme dark color */
+    z-index: 2;
+}
+
+.scallop-top,
+.scallop-bottom {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-size: 80px 40px;
+    z-index: 1;
+}
+
+.scallop-top {
+    top: -39px;
+    background-image: radial-gradient(circle at 40px 40px, #fdfbe1 40px, transparent 0);
+}
+
+.scallop-bottom {
+    bottom: -39px;
+    background-image: radial-gradient(circle at 40px 0px, #fdfbe1 40px, transparent 0);
+}
+
+.perks-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.perk-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.perk-img-wrap {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    position: relative;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: blob-morph 8s ease-in-out infinite alternate;
+}
+
+@keyframes blob-morph {
+    0% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: scale(1);
+    }
+
+    100% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        transform: scale(1.05);
+    }
+}
+
+.perk-img-wrap img {
+    width: 75%;
+    height: auto;
+    mix-blend-mode: multiply;
+    position: relative;
+    z-index: 1;
+}
+
+.perk-bg-1 {
+    background: #e8f7ec;
+}
+
+.perk-bg-2 {
+    background: #fdf0f8;
+}
+
+.perk-bg-3 {
+    background: #fff8e1;
+}
+
+.perk-item h3 {
+    font-family: var(--font-primary);
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #331d2c;
+}
+
+.perk-item p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #5d4253;
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .perks-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+}
+
+/* ============================================
    ABOUT
    ============================================ */
 .about {
