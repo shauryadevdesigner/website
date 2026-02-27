@@ -1229,41 +1229,39 @@ img {
 }
 
 /* ============================================
-   PERKS SECTION (SCALLOPED - DARK MODE)
+   WHITE WAVY DIVIDERS
    ============================================ */
-.perks {
-    background: #111111;
-    /* Slightly lighter for contrast */
+.scallop-white-top,
+.scallop-white-bottom {
     position: relative;
-    padding: 120px 0;
-    margin: 100px 0;
-    color: var(--white);
-    z-index: 2;
-    /* Light light colored borders */
-    border-top: 1px solid var(--green);
-    border-bottom: 1px solid var(--magenta);
-}
-
-.scallop-top,
-.scallop-bottom {
-    position: absolute;
-    left: 0;
     width: 100%;
     height: 40px;
     background-size: 80px 40px;
-    z-index: 1;
+    z-index: 5;
 }
 
-.scallop-top {
-    top: -40px;
-    background-image: radial-gradient(circle at 40px 40px, #111111 40px, transparent 0);
-    filter: drop-shadow(0 -2px 3px var(--green-glow-strong));
+.scallop-white-top {
+    background-image:
+        radial-gradient(circle at 40px 40px, transparent 38px, rgba(255, 255, 255, 0.7) 40px, transparent 40px),
+        radial-gradient(circle at 40px 40px, var(--bg-primary) 38px, transparent 38px);
 }
 
-.scallop-bottom {
-    bottom: -40px;
-    background-image: radial-gradient(circle at 40px 0px, #111111 40px, transparent 0);
-    filter: drop-shadow(0 2px 3px var(--magenta-glow-strong));
+.scallop-white-bottom {
+    background-image:
+        radial-gradient(circle at 40px 0px, transparent 38px, rgba(255, 255, 255, 0.7) 40px, transparent 40px),
+        radial-gradient(circle at 40px 0px, var(--bg-primary) 38px, transparent 38px);
+}
+
+/* ============================================
+   PERKS SECTION (SCALLOPED - DARK MODE)
+   ============================================ */
+.perks {
+    background: #0d0d0d;
+    position: relative;
+    padding: 120px 0;
+    margin: 80px 0;
+    color: var(--white);
+    z-index: 2;
 }
 
 .perks-grid {
@@ -1271,14 +1269,6 @@ img {
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
     text-align: center;
-    position: relative;
-    z-index: 2;
-}
-
-.perk-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .perk-img-wrap {
@@ -1287,70 +1277,234 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 25px;
+    margin: 0 auto 25px;
     position: relative;
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     animation: blob-morph 8s ease-in-out infinite alternate;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-@keyframes blob-morph {
-    0% {
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-        transform: scale(1);
-    }
-
-    100% {
-        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-        transform: scale(1.05);
-    }
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .perk-img-wrap img {
-    width: 80%;
-    height: auto;
-    filter: invert(1) brightness(1.5) contrast(1.2);
-    /* Makes black ink white */
-    mix-blend-mode: screen;
-    /* Helps with background blending */
+    width: 70%;
+    filter: invert(1) brightness(1.8);
+}
+
+/* ============================================
+   COMPARISON SECTION
+   ============================================ */
+.comparison {
+    padding: 100px 0;
+}
+
+.comp-card-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 40px;
+    overflow: hidden;
+}
+
+.comp-card {
+    display: grid;
+    grid-template-columns: 1fr 0.2fr 1fr;
+    align-items: stretch;
+}
+
+.comp-others {
+    background: rgba(255, 0, 100, 0.03);
+    padding: 60px 40px;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.comp-h27 {
+    background: rgba(0, 255, 150, 0.03);
+    padding: 60px 40px;
+}
+
+.comp-title {
+    font-family: var(--font-primary);
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.comp-list {
+    list-style: none;
+}
+
+.comp-list li {
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 16px;
+}
+
+.comp-vs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
+    z-index: 10;
+}
+
+.vs-blob {
+    background: var(--gradient-main);
+    color: var(--white-pure);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    box-shadow: 0 0 30px var(--magenta-glow);
+    transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+}
+
+/* ============================================
+   TESTIMONIALS
+   ============================================ */
+.testimonials {
+    padding: 120px 0;
+}
+
+.test-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.test-huge-title {
+    font-family: var(--font-primary);
+    font-size: clamp(40px, 8vw, 90px);
+    line-height: 0.9;
+    letter-spacing: -4px;
+    margin-bottom: 20px;
+}
+
+.test-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.test-card {
+    padding: 40px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 300px;
+    transition: transform 0.4s;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.test-card:hover {
+    transform: translateY(-10px);
+}
+
+.test-card p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--white);
+    font-weight: 500;
+}
+
+.test-footer {
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.t-pink {
+    background: rgba(255, 100, 150, 0.1);
+}
+
+.t-purple {
+    background: rgba(180, 100, 255, 0.1);
+}
+
+.t-cream {
+    background: rgba(255, 230, 200, 0.05);
+}
+
+/* ============================================
+   GIANT CTA (MARKLENCE STYLE)
+   ============================================ */
+.giant-cta {
+    padding: 15vw 0;
+    position: relative;
+    overflow: hidden;
+    background: #0a0a0a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.giant-text-wrapper {
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+
+.giant-text-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 25vw;
+    font-family: var(--font-primary);
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.01);
+    white-space: nowrap;
     z-index: 1;
 }
 
-.perk-bg-1 {
-    background: rgba(0, 255, 136, 0.05);
-}
-
-.perk-bg-2 {
-    background: rgba(255, 0, 170, 0.05);
-}
-
-.perk-bg-3 {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.perk-item h3 {
+.giant-text-main {
+    font-size: 18vw;
     font-family: var(--font-primary);
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    color: var(--white-pure);
-    letter-spacing: -0.5px;
+    font-weight: 800;
+    background: linear-gradient(180deg, #fff 30%, rgba(255, 255, 255, 0.2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -1vw;
+    position: relative;
+    z-index: 2;
 }
 
-.perk-item p {
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--gray-400);
-    max-width: 280px;
-    margin: 0 auto;
+.giant-text-reflect {
+    font-size: 18vw;
+    font-family: var(--font-primary);
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.05);
+    letter-spacing: -1vw;
+    transform: scaleY(-0.6) translateY(-50%);
+    opacity: 0.3;
+    filter: blur(8px);
+    margin-top: -5vw;
 }
 
-@media (max-width: 768px) {
-    .perks-grid {
-        grid-template-columns: 1fr;
-        gap: 60px;
-    }
+.cta-overlay-content {
+    margin-top: -10vw;
+    position: relative;
+    z-index: 10;
+    text-align: center;
+}
+
+.cta-mini-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    opacity: 0.8;
 }
 
 /* ============================================
