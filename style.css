@@ -1232,14 +1232,16 @@ img {
    PERKS SECTION (SCALLOPED - DARK MODE)
    ============================================ */
 .perks {
-    background: var(--bg-secondary);
+    background: #111111;
+    /* Slightly lighter for contrast */
     position: relative;
     padding: 120px 0;
     margin: 100px 0;
     color: var(--white);
     z-index: 2;
-    border-top: 1px solid var(--gray-800);
-    border-bottom: 1px solid var(--gray-800);
+    /* Light light colored borders */
+    border-top: 1px solid var(--green);
+    border-bottom: 1px solid var(--magenta);
 }
 
 .scallop-top,
@@ -1253,13 +1255,15 @@ img {
 }
 
 .scallop-top {
-    top: -39px;
-    background-image: radial-gradient(circle at 40px 40px, var(--bg-secondary) 40px, transparent 0);
+    top: -40px;
+    background-image: radial-gradient(circle at 40px 40px, #111111 40px, transparent 0);
+    filter: drop-shadow(0 -2px 3px var(--green-glow-strong));
 }
 
 .scallop-bottom {
-    bottom: -39px;
-    background-image: radial-gradient(circle at 40px 0px, var(--bg-secondary) 40px, transparent 0);
+    bottom: -40px;
+    background-image: radial-gradient(circle at 40px 0px, #111111 40px, transparent 0);
+    filter: drop-shadow(0 2px 3px var(--magenta-glow-strong));
 }
 
 .perks-grid {
