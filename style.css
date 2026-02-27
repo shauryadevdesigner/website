@@ -1537,29 +1537,54 @@ img {
     margin-bottom: 20px;
 }
 
-.test-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+.test-marquee {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 60px 0;
+}
+
+.test-track {
+    display: flex;
+    align-items: center;
     gap: 30px;
+    width: max-content;
+}
+
+.test-marquee.row-ltr .test-track {
+    animation: marquee-ltr 60s linear infinite;
 }
 
 .test-card {
-    padding: 40px;
-    border-radius: 30px;
+    padding: 30px;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 300px;
-    transition: transform 0.4s;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-height: 180px;
+    width: 320px;
+    flex-shrink: 0;
+    transition: all 0.4s var(--ease-out);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.02);
+    cursor: default;
+}
+
+.test-track:hover {
+    animation-play-state: paused;
 }
 
 .test-card:hover {
-    transform: translateY(-10px);
+    transform: scale(1.05) translateY(-5px);
+    border-color: var(--green);
+    background: rgba(0, 255, 136, 0.03);
+    z-index: 10;
 }
 
 .test-card p {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.5;
     color: var(--white);
     font-weight: 500;
@@ -1569,21 +1594,45 @@ img {
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     font-family: var(--font-mono);
-    font-size: 12px;
+    font-size: 11px;
     color: rgba(255, 255, 255, 0.6);
 }
 
 .t-pink {
-    background: rgba(255, 100, 150, 0.1);
+    background: rgba(255, 100, 150, 0.05);
+    border-color: rgba(255, 100, 150, 0.1);
 }
 
 .t-purple {
-    background: rgba(180, 100, 255, 0.1);
+    background: rgba(180, 100, 255, 0.05);
+    border-color: rgba(180, 100, 255, 0.1);
 }
 
 .t-cream {
-    background: rgba(255, 230, 200, 0.05);
+    background: rgba(255, 230, 200, 0.03);
+    border-color: rgba(255, 230, 200, 0.1);
 }
+
+.t-blue {
+    background: rgba(0, 150, 255, 0.05);
+    border-color: rgba(0, 150, 255, 0.1);
+}
+
+.t-green {
+    background: rgba(0, 255, 136, 0.05);
+    border-color: rgba(0, 255, 136, 0.1);
+}
+
+.t-orange {
+    background: rgba(255, 150, 0, 0.05);
+    border-color: rgba(255, 150, 0, 0.1);
+}
+
+.t-cyan {
+    background: rgba(0, 255, 255, 0.05);
+    border-color: rgba(0, 255, 255, 0.1);
+}
+
 
 /* ============================================
    GIANT CTA (MARKLENCE STYLE)
