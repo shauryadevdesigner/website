@@ -1229,16 +1229,17 @@ img {
 }
 
 /* ============================================
-   PERKS SECTION (SCALLOPED)
+   PERKS SECTION (SCALLOPED - DARK MODE)
    ============================================ */
 .perks {
-    background: #fdfbe1;
+    background: var(--bg-secondary);
     position: relative;
     padding: 120px 0;
     margin: 100px 0;
-    color: #331d2c;
-    /* Theme dark color */
+    color: var(--white);
     z-index: 2;
+    border-top: 1px solid var(--gray-800);
+    border-bottom: 1px solid var(--gray-800);
 }
 
 .scallop-top,
@@ -1253,12 +1254,12 @@ img {
 
 .scallop-top {
     top: -39px;
-    background-image: radial-gradient(circle at 40px 40px, #fdfbe1 40px, transparent 0);
+    background-image: radial-gradient(circle at 40px 40px, var(--bg-secondary) 40px, transparent 0);
 }
 
 .scallop-bottom {
     bottom: -39px;
-    background-image: radial-gradient(circle at 40px 0px, #fdfbe1 40px, transparent 0);
+    background-image: radial-gradient(circle at 40px 0px, var(--bg-secondary) 40px, transparent 0);
 }
 
 .perks-grid {
@@ -1277,8 +1278,8 @@ img {
 }
 
 .perk-img-wrap {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1286,6 +1287,7 @@ img {
     position: relative;
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     animation: blob-morph 8s ease-in-out infinite alternate;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 @keyframes blob-morph {
@@ -1301,37 +1303,41 @@ img {
 }
 
 .perk-img-wrap img {
-    width: 75%;
+    width: 80%;
     height: auto;
-    mix-blend-mode: multiply;
+    filter: invert(1) brightness(1.5) contrast(1.2);
+    /* Makes black ink white */
+    mix-blend-mode: screen;
+    /* Helps with background blending */
     position: relative;
     z-index: 1;
 }
 
 .perk-bg-1 {
-    background: #e8f7ec;
+    background: rgba(0, 255, 136, 0.05);
 }
 
 .perk-bg-2 {
-    background: #fdf0f8;
+    background: rgba(255, 0, 170, 0.05);
 }
 
 .perk-bg-3 {
-    background: #fff8e1;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .perk-item h3 {
     font-family: var(--font-primary);
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
     margin-bottom: 12px;
-    color: #331d2c;
+    color: var(--white-pure);
+    letter-spacing: -0.5px;
 }
 
 .perk-item p {
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.6;
-    color: #5d4253;
+    color: var(--gray-400);
     max-width: 280px;
     margin: 0 auto;
 }
