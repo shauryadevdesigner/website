@@ -802,20 +802,42 @@ img {
 .brands-pills {
     position: relative;
     width: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
-    height: 180px;
+    margin: 40px 0;
+    overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: center;
+    background: rgba(255, 255, 255, 0.02);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 30px 0;
+}
+
+.brands-track {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.brands-track:hover {
+    animation-play-state: paused;
 }
 
 /* Individual pill card */
 .brand-pill {
-    position: absolute;
-    transform: rotate(var(--rotate, 0deg));
-    transition: transform 0.4s var(--ease-out), box-shadow 0.4s;
-    animation: pill-idle 5s ease-in-out infinite;
+    flex-shrink: 0;
+    transition: transform 0.4s var(--ease-out);
 }
 
 .brand-pill:hover {
@@ -898,116 +920,16 @@ img {
 }
 
 /* Pill Positioning — wave layout */
-.pill-1 {
-    left: 8%;
-    top: 15%;
-    animation-delay: 0s;
-}
-
-.pill-2 {
-    left: 20%;
-    top: 5%;
-    animation-delay: 0.3s;
-}
-
-.pill-3 {
-    left: 33%;
-    top: 18%;
-    animation-delay: 0.6s;
-}
-
-.pill-4 {
-    left: 45%;
-    top: 0%;
-    animation-delay: 0.9s;
-}
-
-.pill-5 {
-    left: 2%;
-    top: 62%;
-    animation-delay: 1.3s;
-}
-
-.pill-6 {
-    left: 54%;
-    top: 55%;
-    animation-delay: 0.4s;
-}
-
-.pill-7 {
-    left: 66%;
-    top: 65%;
-    animation-delay: 0.7s;
-}
-
-.pill-8 {
-    left: 78%;
-    top: 50%;
-    animation-delay: 1.0s;
-}
-
-.pill-9 {
-    left: 58%;
-    top: 10%;
-    animation-delay: 1.2s;
-}
-
-.pill-10 {
-    left: 88%;
-    top: 25%;
-    animation-delay: 0.5s;
-}
-
-@keyframes pill-idle {
-
-    0%,
-    100% {
-        transform: rotate(var(--rotate, 0deg)) translateY(0);
-    }
-
-    50% {
-        transform: rotate(var(--rotate, 0deg)) translateY(-8px);
-    }
-}
+/* Removed scattered positioning for marquee layout */
 
 /* Responsive */
 @media (max-width: 768px) {
     .brands-pills {
-        height: 300px;
+        padding: 20px 0;
     }
 
     .brand-pill {
-        transform: rotate(var(--rotate, 0deg)) scale(0.85);
-    }
-
-    .pill-5 {
-        top: 50%;
-        left: 5%;
-    }
-
-    .pill-6 {
-        top: 45%;
-        left: 45%;
-    }
-
-    .pill-7 {
-        top: 60%;
-        left: 25%;
-    }
-
-    .pill-8 {
-        top: 72%;
-        left: 60%;
-    }
-
-    .pill-9 {
-        top: 20%;
-        left: 65%;
-    }
-
-    .pill-10 {
-        top: 78%;
-        left: 10%;
+        transform: scale(0.9);
     }
 }
 
